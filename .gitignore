@@ -13,9 +13,9 @@
 slurm_scripts/*
 
 # experiments
-jahs_bench_201_data/
-jahs_bench_201_plots/
-jahs_bench_201_results
+jahs_bench_data/
+jahs_bench_plots/
+jahs_bench_results
 src/utils/CMDs/all_experiments.txt
 
 # IDE related
