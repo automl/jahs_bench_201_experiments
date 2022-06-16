@@ -13,11 +13,10 @@
 slurm_scripts/*
 
 # experiments
-src/backup/
-src/results/
-src/tabular/
-JAHS-Bench-MF/trained_surrogate_models/
-src/tasks/utils/CMDs/all_experiments.txt
+jahs_bench_201_data/
+jahs_bench_201_plots/
+jahs_bench_201_results
+src/utils/CMDs/all_experiments.txt
 
 # IDE related
 .vscode/

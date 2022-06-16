@@ -37,7 +37,7 @@ for experiment, strategies_to_plot in EXPERIMENTS.items():
 
     )
 
-    base_path = BASE_PATH / "results"
+    base_path = BASE_PATH / "jahs_bench_201_results"
     for dataset_idx, dataset in enumerate(sorted(os.listdir(base_path))):
         if not os.path.isdir(os.path.join(base_path, dataset)):
             continue
@@ -93,5 +93,5 @@ for experiment, strategies_to_plot in EXPERIMENTS.items():
     save_fig(
         fig,
         filename=f"{experiment}",
-        output_dir=BASE_PATH / "plots"
+        output_dir=BASE_PATH / "jahs_bench_201_plots"
     )

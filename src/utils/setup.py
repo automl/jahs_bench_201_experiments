@@ -37,7 +37,7 @@ parser.add_argument(
 )
 parser.add_argument(
     "--model_path",
-    default=Path(__file__).parent.parent.parent.parent.parent / "surrogate_models",
+    default=Path(__file__).parent.parent.parent.parent / "jahs_bench_201_data",
     help="Full path to model dir",
 )
 parser.add_argument(
