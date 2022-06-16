@@ -124,10 +124,3 @@ def get_seed_info(path, seed, get_loss_from_run_fn=lambda r: r.loss):
     total_runtime = runtime["finished"][-1] - runtime["started"][0]
 
     return list(losses), list(infos), total_runtime
-
-
-
-# hpbandster
-# torch
-# botorch
-# matplotlib

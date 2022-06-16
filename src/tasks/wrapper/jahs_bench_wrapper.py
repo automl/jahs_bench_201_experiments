@@ -6,9 +6,9 @@ from copy import deepcopy
 
 from hpbandster.core.worker import Worker
 
-from jahs_bench_201.api import Benchmark
-from jahs_bench_201.lib.core.constants import datasets
-from jahs_bench_201.lib.core.configspace import joint_config_space
+from jahs_bench.api import Benchmark
+from jahs_bench.lib.core.constants import datasets
+from jahs_bench.lib.core.configspace import joint_config_space
 
 from jahs_bench_201_experiments.src.tasks.wrapper.utils import create_config_space
 from jahs_bench_201_experiments.src.tasks.wrapper.utils import fidelities, get_diagonal
@@ -52,12 +52,14 @@ class JAHS_Bench_wrapper(Worker):
         assert dataset in datasets, f"Other benchmarks than {datasets} not supported"
 
         self.dataset = dataset
-        self.use_surrogate = use_surrogate  # TODO: Allow for live_training as well
+        self.use_surrogate = use_surrogate  
         self.multi_objective = multi_objective
 
         self.benchmark_fn = Benchmark(
-            model_path=model_path,
-            outputs=["valid-acc", "latency", "runtime"]
+            task=dataset,
+            save_dir=model_path,
+            kind="surrogate" if use_surrogate else "live",
+            download=False
         )
 
         self.fidelity = fidelity
@@ -103,7 +105,7 @@ class JAHS_Bench_wrapper(Worker):
             config=query_config,
             nepochs=nepochs
         )
-
+        results = results[nepochs]
         valid_acc = float(list(results[("valid-acc", "valid-acc")].values())[-1])
         latency = float(list(results[("latency", "latency")].values())[-1])
         cost = float(list(results[("runtime", "runtime")].values())[-1])

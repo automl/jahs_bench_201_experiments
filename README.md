@@ -2,13 +2,33 @@
 
 ## Setup
 
-Install JAHS-Bench-201 using pip
+Repository structure:
+
+    jahs_bench_201_experiments          # This repository
+    ├── jahs_bench_201_data             # To be downloaded (see notes below)
+    ├── jahs_bench_201_plots            # Created upon regenerating plots
+    ├── jahs_bench_201_results          # Created upon running any task
+    ├── src
+    │   ├── analysis                    # Scipts for results analysis
+    │   ├── tasks                       # Scipts for results geneartion
+    │   │   │── ...
+    │   │   │── run_all.sh              # Script submitting SLURM array job
+    │   │   │── run_task.py             # Main task script
+    └── utils
+
+Install JAHS-Bench-201 using pip:
 
 ```bash
-pip install jahs_bench_201
+pip install git+https://github.com/automl/jahs_bench_201.git
 ```
 
-TODO: Surrogate model path
+Download the surrogates:
+
+```bash
+cd jahs_bench_201_experiments
+python -m jahs_bench_201.download --target surrogates
+```
+
 
 ## Experiments
 
@@ -45,17 +65,17 @@ please adjust the user-specific paths in `startup.sh` and `run_all.sh`
 To reproduce plots from Section 4:
 
 ```bash
-python src/tasks/analysis/analysis.py
+python src/analysis/analysis.py
 ```
 
 To reproduce Table 4 and 5:
 
 ```bash
-python src/tasks/analysis/compare_runtime.py
+python src/analysis/compare_runtime.py
 ```
 
 To generate leaderboard: 
 
 ```bash
-python src/tasks/analysis/leaderboard.py
+python src/analysis/leaderboard.py
 ```

@@ -15,4 +15,4 @@ python $basedir/slurm_helper.py \
     --memory_per_job 100000 \
     -o $work/LOGS/ \
     -l $work/LOGS/ \
-    $basedir/utils/CMDs/all_experiments.txt
+    $basedir/../utils/CMDs/all_experiments.txt

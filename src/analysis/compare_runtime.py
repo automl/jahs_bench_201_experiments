@@ -4,19 +4,10 @@ from pathlib import Path
 from tabulate import tabulate
 from scipy.stats import gmean
 
-from jahs_bench_201_experiments.src.tasks.utils.util import get_seed_info, MAX_BUDGET
-from jahs_bench_201_experiments.src.tasks.utils.styles import DATASETS
+from jahs_bench_201_experiments.src.utils.styles import DATASETS
+from jahs_bench_201_experiments.src.utils.util import get_seed_info, MAX_BUDGET
 
-BASE_PATH = Path(__file__).parent.parent.parent / "backup" / "main"
-
-# from mpl_point_clicker import clicker
-#
-# klicker = clicker(axs[2], ["event"], markers=["x"])
-# plt.show()
-# speedups = dict()
-# speedups["fashionMNIST"] = klicker.get_positions()
-#
-# print(speedups["fashionMNIST"])
+BASE_PATH = Path(__file__).parent.parent.parent / "jahs_bench_201_results"
 
 
 speedups = dict()

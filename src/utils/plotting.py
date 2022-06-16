@@ -1,5 +1,3 @@
-import os
-import pickle
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -7,7 +5,7 @@ import seaborn as sns
 from path import Path
 from scipy import stats
 
-from jahs_bench_201_experiments.src.tasks.utils.styles import STRATEGIES, COLOR_MARKER_DICT, DATASETS
+from jahs_bench_201_experiments.src.utils.styles import STRATEGIES, COLOR_MARKER_DICT, DATASETS
 
 BASE_PATH = Path(__file__).parent.parent / "results"
 

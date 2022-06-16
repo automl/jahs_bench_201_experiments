@@ -5,7 +5,7 @@ from path import Path
 from optimizer.random_search import RandomSearch
 from wrapper.jahs_bench_wrapper import JAHS_Bench_wrapper
 from optimizer.successive_halving import SuccessiveHalving
-from jahs_bench_201_experiments.src.tasks.utils.setup import set_seed, args
+from jahs_bench_201_experiments.src.utils.setup import set_seed, args
 
 import hpbandster.core.result as hpres
 import hpbandster.core.nameserver as hpns
@@ -33,8 +33,6 @@ args.working_directory = os.path.join(args.working_directory, experiment, str(ar
 working_dir = Path(args.working_directory)
 working_dir.makedirs_p()
 
-model_path = args.model_path / f"{args.dataset}"
-
 result_logger = hpres.json_result_logger(directory=args.working_directory,
                                          overwrite=False)
 
@@ -48,7 +46,7 @@ ns_host, ns_port = NS.start()
 
 worker = JAHS_Bench_wrapper(
     dataset=args.dataset,
-    model_path=model_path,
+    model_path=args.model_path,
     use_default_hps=args.use_default_hps,
     use_default_arch=args.use_default_arch,
     fidelity=args.fidelity,

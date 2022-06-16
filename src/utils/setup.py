@@ -37,12 +37,12 @@ parser.add_argument(
 )
 parser.add_argument(
     "--model_path",
-    default=Path(__file__).parent.parent.parent.parent / "jahs_bench_201_data",
+    default=Path(__file__).parent.parent.parent / "jahs_bench_201_data",
     help="Full path to model dir",
 )
 parser.add_argument(
     "--working_directory",
-    default=os.path.dirname(os.path.realpath(__file__)) + "/../../results/",
+    default=Path(__file__).parent.parent.parent / "jahs_bench_201_results",
     help="Full path to model dir",
 )
 parser.add_argument(

@@ -3,7 +3,7 @@ from typing import Union
 import ConfigSpace as CS
 from copy import deepcopy
 
-from jahs_bench_201.lib.core.constants import Activations
+from jahs_bench.lib.core.constants import Activations
 
 
 def get_fidelity_hypercube(selected_fidelities, eta=3):
