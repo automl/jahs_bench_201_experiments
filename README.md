@@ -19,7 +19,7 @@ To reproduce results for JAHS, run:
 python src/tasks/run_task.py --dataset DATASET --seed SEED --fidelity None
 ```
 
-append `--use_default_hps` or `--use_default_arch` for NAS-only or HPo-only, respectively.
+append `--use_default_hps` or `--use_default_arch` for NAS-only or HPO-only, respectively.
 
 ### Second research question
 To reproduce results, run:
@@ -38,7 +38,7 @@ We provide a script for SLURM-job submission for all leaderboard entries, before
 bash src/tasks/run_all.sh
 ```
 
-please adjust the user-specific paths in `startup.sh` and 'run_all.sh'
+please adjust the user-specific paths in `startup.sh` and `run_all.sh`
 
 ### Analysis
 
