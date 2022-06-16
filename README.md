@@ -1,20 +1,14 @@
-# JAHS-Bench-201 experiments
+# JAHS-Bench-201 Experiments
 
-## Setup
 
-Repository structure:
+## Installation
 
-    jahs_bench_201_experiments          # This repository
-    ├── jahs_bench_201_data             # To be downloaded (see notes below)
-    ├── jahs_bench_201_plots            # Created upon regenerating plots
-    ├── jahs_bench_201_results          # Created upon running any task
-    ├── src
-    │   ├── analysis                    # Scipts for results analysis
-    │   ├── tasks                       # Scipts for results geneartion
-    │   │   │── ...
-    │   │   │── run_all.sh              # Script submitting SLURM array job
-    │   │   │── run_task.py             # Main task script
-    └── utils
+Clone this repository:
+
+```bash
+git clone https://github.com/automl/jahs_bench_201_experiments.git
+cd jahs_bench_201_experiments
+```
 
 Install JAHS-Bench-201 using pip:
 
@@ -25,10 +19,10 @@ pip install git+https://github.com/automl/jahs_bench_201.git
 Download the surrogates:
 
 ```bash
-cd jahs_bench_201_experiments
 python -m jahs_bench_201.download --target surrogates
 ```
 
+    
 
 ## Experiments
 
@@ -79,3 +73,18 @@ To generate leaderboard:
 ```bash
 python src/analysis/leaderboard.py
 ```
+
+
+## Repository structure:
+
+    jahs_bench_201_experiments          # This repository
+    ├── jahs_bench_201_data             # To be downloaded (see notes below)
+    ├── jahs_bench_201_plots            # Created upon regenerating plots
+    ├── jahs_bench_201_results          # Created upon running any task
+    ├── src
+    │   ├── analysis                    # Scipts for results analysis
+    │   ├── tasks                       # Scipts for results geneartion
+    │   │   │── ...
+    │   │   │── run_all.sh              # Script submitting SLURM array job
+    │   │   │── run_task.py             # Main task script
+    └── utils
