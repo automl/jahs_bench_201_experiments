@@ -3,9 +3,9 @@ import pickle
 from path import Path
 
 from optimizer.random_search import RandomSearch
-from wrapper.jahs_bench_wrapper import JAHS_Bench_wrapper
 from optimizer.successive_halving import SuccessiveHalving
 from jahs_bench_201_experiments.src.utils.setup import set_seed, args
+from jahs_bench_201_experiments.src.tasks.wrapper.jahs_bench_wrapper import JAHS_Bench_wrapper
 
 import hpbandster.core.result as hpres
 import hpbandster.core.nameserver as hpns

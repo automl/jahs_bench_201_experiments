@@ -106,9 +106,9 @@ class JAHS_Bench_wrapper(Worker):
             nepochs=nepochs
         )
         results = results[nepochs]
-        valid_acc = float(list(results[("valid-acc", "valid-acc")].values())[-1])
-        latency = float(list(results[("latency", "latency")].values())[-1])
-        cost = float(list(results[("runtime", "runtime")].values())[-1])
+        valid_acc = float(results["valid-acc"])
+        latency = float(results["latency"])
+        cost = float(results["runtime"])
 
         if self.multi_objective:
             _valid_acc = normalize_metric(valid_acc, dataset=self.dataset, key="valid-acc")
