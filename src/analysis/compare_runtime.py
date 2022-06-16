@@ -7,7 +7,7 @@ from scipy.stats import gmean
 from jahs_bench_201_experiments.src.utils.styles import DATASETS
 from jahs_bench_201_experiments.src.utils.util import get_seed_info, MAX_BUDGET
 
-BASE_PATH = Path(__file__).parent.parent.parent / "jahs_bench_201_results"
+BASE_PATH = Path(__file__).parent.parent.parent / "jahs_bench_results"
 
 
 speedups = dict()

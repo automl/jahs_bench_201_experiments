@@ -22,6 +22,12 @@ Install JAHS-Bench-201 using pip:
 pip install git+https://github.com/automl/jahs_bench_201.git
 ```
 
+Install experiments-specific packages:
+
+```bash
+pip install -r requirements.txt
+```
+
 Download the surrogates:
 
 ```bash

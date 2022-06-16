@@ -23,7 +23,7 @@ BASE_PATH = Path(__file__).parent.parent.parent
 
 EXPERIMENTS = {
     "RQ_1": ["RS", "RS_just_hpo", "RS_just_nas"],
-    "RQ_2": ["SH_Epochs", "SH_N", "SH_W", "SH_Resolution", "SH_diagonal"]
+    "RQ_2": ["SH_Epochs", "SH_N", "SH_W", "SH_Resolution"]
 }
 
 for experiment, strategies_to_plot in EXPERIMENTS.items():
@@ -37,7 +37,7 @@ for experiment, strategies_to_plot in EXPERIMENTS.items():
 
     )
 
-    base_path = BASE_PATH / "jahs_bench_201_results"
+    base_path = BASE_PATH / "jahs_bench_results"
     for dataset_idx, dataset in enumerate(sorted(os.listdir(base_path))):
         if not os.path.isdir(os.path.join(base_path, dataset)):
             continue
@@ -93,5 +93,5 @@ for experiment, strategies_to_plot in EXPERIMENTS.items():
     save_fig(
         fig,
         filename=f"{experiment}",
-        output_dir=BASE_PATH / "jahs_bench_201_plots"
+        output_dir=BASE_PATH / "jahs_bench_plots"
     )

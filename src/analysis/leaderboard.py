@@ -107,7 +107,7 @@ def create_markdown(results):
     return md
 
 
-BASE_PATH = Path(__file__).parent.parent.parent / "jahs_bench_201_results"
+BASE_PATH = Path(__file__).parent.parent.parent / "jahs_bench_results"
 
 results = dict()
 for dataset_idx, dataset in enumerate(sorted(os.listdir(BASE_PATH))):
