@@ -5,8 +5,9 @@ from tabulate import tabulate
 from scipy.stats import gmean
 
 from jahs_bench_201_experiments.src.tasks.utils.util import get_seed_info, MAX_BUDGET
+from jahs_bench_201_experiments.src.tasks.utils.styles import DATASETS
 
-BASE_PATH = Path(__file__).parent.parent.parent / "results"
+BASE_PATH = Path(__file__).parent.parent.parent / "backup" / "main"
 
 # from mpl_point_clicker import clicker
 #
@@ -40,6 +41,14 @@ speedups["fashionMNIST"] = [
     [99.31263957, 5.06602542],
     [39.66100938, 5.06602542]
 ]
+
+new_line = [
+        "--------------------",
+        "-----------------------",
+        "-----------------------",
+        "-----------------------",
+        "------------------------"
+    ]
 
 results = dict()
 for dataset_idx, dataset in enumerate(sorted(os.listdir(BASE_PATH))):
@@ -75,7 +84,7 @@ for dataset in MAX_BUDGET.keys():
     _over_hpo = 100 / speedups[dataset][1][0]
     _over_nas = 100 / speedups[dataset][3][0]
     data.append(
-        [dataset,
+        [DATASETS[dataset],
          "x{:.1f}".format(_over_hpo),
          "x{:.1f}".format(_over_nas),
          "{:.1f}".format(results[dataset]['runtime']),
@@ -84,13 +93,15 @@ for dataset in MAX_BUDGET.keys():
     )
     over_hpo.append(_over_hpo)
     over_nas.append(_over_nas)
+data.append(new_line)
 data.append(
-    ["average",
+    ["Geometric mean",
     "x{:.1f}".format(gmean(over_hpo)),
      "x{:.1f}".format(gmean(over_nas)),
     "-",
     "-"
      ]
 )
+data.append(new_line)
 
 print(tabulate(data, headers=col_names))

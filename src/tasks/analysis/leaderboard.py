@@ -3,15 +3,16 @@ import torch
 import numpy as np
 import pandas as pd
 from pathlib import Path
+from scipy.stats import sem
 from botorch.utils.multi_objective.box_decompositions.dominated import (
     DominatedPartitioning
 )
 
 from jahs_bench_201_experiments.src.tasks.utils.util import get_seed_info
+from jahs_bench_201_experiments.src.tasks.utils.styles import DATASETS
 
 
 def calculate_hypervolume(objective_1, objective_2):
-
     # account for maximization of negative latency
     objective_2 = [[-o for o in obj2] for obj2 in objective_2]
 
@@ -34,7 +35,76 @@ def calculate_hypervolume(objective_1, objective_2):
         volume = bd.compute_hypervolume()
         volumes.append(volume.item())
 
-    return np.mean(volumes), np.std(volumes)
+    return np.mean(volumes), sem(volumes)
+
+
+def _create_markdown_table(entry, optimization="single", previous_markdown=None):
+    if previous_markdown is None:
+        score = "Accuracy $\pm$ SE" if optimization == "single" else "Hypervolume $\pm$ SE"
+        md = f"| Rank | {score} | Name | URL | \n"
+        md += "| ---- | ----- | ---- | ---- | \n"
+        rank = 1
+    else:
+        md = previous_markdown
+        rank = 100
+    score, name, url = entry
+    md += f"| {rank} | {score[0]} $\pm$ {score[1]} | {name} | {url} | \n"
+    return md
+
+
+def create_markdown(results):
+    for dataset in results.keys():
+        for opt in ["single", "multi"]:
+            _max = (0, 0)
+            for strategy in ["SH_Epochs", "SH_N", "SH_W", "SH_Resolution"]:
+                r = results[dataset][opt][strategy]
+                if _max[0] < r[0]:
+                    _max = r
+                    _key = strategy
+                results[dataset][opt].pop(strategy)
+            results[dataset][opt]["multi_fidelity"] = _max
+
+    reformed_dict = {}
+    for out_key, in_dict in results.items():
+        for in_key, values in in_dict.items():
+            for k, v in values.items():
+                values[k] = tuple(np.round(v, 2))
+
+            reformed_dict[(out_key,
+                           in_key)] = values
+
+    df = pd.DataFrame(reformed_dict)
+
+    entry_mapping = {
+        "Black-box": "RS",
+        "Cost-aware": "RS",
+        "Multi-fidelity": "multi_fidelity",
+        "Multi multi-fidelity": "SH_diagonal"
+    }
+
+    method_mapping = {
+        "RS": "random search",
+        "multi_fidelity": "Hyperband",
+        "SH_diagonal": "Hyperband"
+    }
+
+    optimization_mapping = {
+        "single": "Single Objective",
+        "multi": "Multi Objective"
+    }
+
+    md = "# JAHS-Bench-201 Leaderboards \n \n"
+    for optimization in ["single", "multi"]:
+        md += f"## {optimization_mapping[optimization]} \n \n"
+        for entry, method in entry_mapping.items():
+            md += f"### {entry} \n \n"
+            for dataset in results.keys():
+                md += f"#### {DATASETS[dataset]} \n \n"
+                url = "[JAHS-Bench-201](https://github.com/automl/jahs_bench_201_experiments)"
+                md += _create_markdown_table((df[dataset][optimization][method], method_mapping[method], url),
+                                             optimization=optimization)
+                md += " \n \n"
+    return md
 
 
 BASE_PATH = Path(__file__).parent.parent.parent / "results"
@@ -67,31 +137,7 @@ for dataset_idx, dataset in enumerate(sorted(os.listdir(BASE_PATH))):
             results[dataset]["multi"][strategy[3:]] = calculate_hypervolume(accuracies, latencies)
         else:
             _accuracies = [np.maximum.accumulate(a)[-1] for a in accuracies]
-            results[dataset]["single"][strategy] = (np.mean(_accuracies), np.std(_accuracies))
+            results[dataset]["single"][strategy] = (np.mean(_accuracies), sem(_accuracies))
 
-for dataset in results.keys():
-    for opt in ["single", "multi"]:
-        _max = (0, 0)
-        for strategy in ["SH_Epochs", "SH_N", "SH_W", "SH_Resolution"]:
-            r = results[dataset][opt][strategy]
-            if _max[0] < r[0]:
-                _max = r
-                _key = strategy
-            results[dataset][opt].pop(strategy)
-        results[dataset][opt]["multi_fidelity"] = _max
-
-
-reformed_dict = {}
-for out_key, in_dict in results.items():
-    for in_key, values in in_dict.items():
-        for k, v in values.items():
-            values[k] = tuple(np.round(v, 2))
-
-        reformed_dict[(out_key,
-                       in_key)] = values
-
-df = pd.DataFrame(reformed_dict)
-
-
-print(df.to_latex())
-# print(df)
+md = create_markdown(results)
+print(md)

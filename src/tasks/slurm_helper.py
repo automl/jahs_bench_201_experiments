@@ -1,3 +1,5 @@
+# Adapted from automl
+
 template = """#!/bin/bash -l
 #SBATCH -o {out_folder}/%x.%N.%A.%a.out
 #SBATCH -e {out_folder}/%x.%N.%A.%a.err
