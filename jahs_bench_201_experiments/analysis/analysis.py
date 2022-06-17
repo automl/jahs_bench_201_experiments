@@ -19,7 +19,7 @@ from jahs_bench_201_experiments.utils.plotting import (
 )
 
 
-BASE_PATH = Path(__file__).parent.parent.parent
+BASE_PATH = Path(".")
 
 EXPERIMENTS = {
     "RQ_1": ["RS", "RS_just_hpo", "RS_just_nas"],

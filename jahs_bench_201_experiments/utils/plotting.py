@@ -7,7 +7,7 @@ from scipy import stats
 
 from jahs_bench_201_experiments.utils.styles import STRATEGIES, COLOR_MARKER_DICT, DATASETS
 
-BASE_PATH = Path(__file__).parent.parent / "jahs_bench_results"
+BASE_PATH = Path("jahs_bench_results")
 
 
 def set_general_plot_style():
