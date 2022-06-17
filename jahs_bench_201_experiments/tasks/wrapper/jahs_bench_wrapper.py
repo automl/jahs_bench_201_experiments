@@ -10,8 +10,8 @@ from jahs_bench.api import Benchmark
 from jahs_bench.lib.core.constants import datasets
 from jahs_bench.lib.core.configspace import joint_config_space
 
-from jahs_bench_201_experiments.jahs_bench_201_experiments.tasks.wrapper.utils import create_config_space
-from jahs_bench_201_experiments.jahs_bench_201_experiments.tasks.wrapper.utils import fidelities, get_diagonal
+from jahs_bench_201_experiments.tasks.wrapper.utils import create_config_space
+from jahs_bench_201_experiments.tasks.wrapper.utils import fidelities, get_diagonal
 
 
 METRIC_BOUNDS = {

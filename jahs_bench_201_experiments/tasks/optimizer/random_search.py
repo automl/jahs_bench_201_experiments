@@ -18,7 +18,7 @@ from hpbandster.core.master import Master
 from hpbandster.optimizers.iterations import SuccessiveHalving
 from hpbandster.optimizers.config_generators.random_sampling import RandomSampling as RS
 
-from jahs_bench_201_experiments.jahs_bench_201_experiments.tasks.wrapper.utils import fidelities
+from jahs_bench_201_experiments.tasks.wrapper.utils import fidelities
 
 
 class RandomSearch(Master):

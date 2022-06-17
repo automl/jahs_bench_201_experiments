@@ -8,8 +8,8 @@ from botorch.utils.multi_objective.box_decompositions.dominated import (
     DominatedPartitioning
 )
 
-from jahs_bench_201_experiments.jahs_bench_201_experiments.utils.util import get_seed_info
-from jahs_bench_201_experiments.jahs_bench_201_experiments.utils.styles import DATASETS
+from jahs_bench_201_experiments.utils.util import get_seed_info
+from jahs_bench_201_experiments.utils.styles import DATASETS
 
 
 def calculate_hypervolume(objective_1, objective_2):
