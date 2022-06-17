@@ -19,7 +19,7 @@ for seed in SEEDS:
             if fidelity == "None":
                 fidelity += " --n_iterations 100"
             elif isinstance(fidelity, list):
-                fidelity = str(fidelity)[1:-1].replace("'", "").replace(",", "")
+                fidelity = str(fidelity)[1:-1].replace("'", "").replace(",", "") + " --n_iterations 42"
             __cmd = _cmd + f" --fidelity {fidelity}"
             for multi_objective in MULTI_OBJECTIVE:
                 if multi_objective:

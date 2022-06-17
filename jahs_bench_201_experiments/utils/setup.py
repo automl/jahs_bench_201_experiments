@@ -1,9 +1,8 @@
-from pathlib import Path
-import argparse
 import os
-
-import numpy as np
 import random
+import argparse
+import numpy as np
+from pathlib import Path
 
 
 def set_seed(seed):
@@ -30,7 +29,7 @@ parser.add_argument(
 )
 parser.add_argument(
     "--fidelity",
-    default="Epochs",
+    default="None",
     nargs='+',
     help="fidelity.",
     choices=["Epochs", "N", "W", "Resolution", "None"],
@@ -47,7 +46,7 @@ parser.add_argument(
 )
 parser.add_argument(
     "--n_iterations",
-    type=int, default=42,
+    type=int, default=100,
     help="Number of search iterations."
 )
 parser.add_argument(
@@ -93,5 +92,6 @@ parser.add_argument(
 args = parser.parse_args()
 if len(args.fidelity) == 1:
     args.fidelity = args.fidelity[0]
+    args.num_iterations = 42
 if args.fidelity == "None":
     args.fidelity = None
