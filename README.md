@@ -61,7 +61,7 @@ We provide a script for SLURM-job submission for all leaderboard entries, before
 bash jahs_bench_201_experiments/tasks/run_all.sh
 ```
 
-please adjust the user-specific paths in `startup.sh` and `run_all.sh`
+NOTE: please adjust the user-specific paths in `startup.sh` and `run_all.sh`
 
 ### Analysis
 
@@ -77,12 +77,15 @@ To reproduce Table 4 and 5:
 python jahs_bench_201_experiments/analysis/compare_runtime.py
 ```
 
+NOTE: this command requires all data.
+
 To generate leaderboard: 
 
 ```bash
 python jahs_bench_201_experiments/analysis/leaderboard.py
 ```
 
+NOTE: this command requires all data.
 
 ## Repository structure:
 
