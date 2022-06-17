@@ -87,7 +87,7 @@ python src/analysis/leaderboard.py
     ├── jahs_bench_201_data             # To be downloaded (see notes below)
     ├── jahs_bench_201_plots            # Created upon regenerating plots
     ├── jahs_bench_201_results          # Created upon running any task
-    ├── src
+    ├── jahs_bench_201_experiments
     │   ├── analysis                    # Scipts for results analysis
     │   ├── tasks                       # Scipts for results geneartion
     │   │   │── ...
