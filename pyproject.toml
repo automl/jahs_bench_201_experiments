@@ -30,6 +30,7 @@ hpbandster = "^0.7.4"
 torch = "^1.11.0"
 botorch = "^0.6.4"
 matplotlib = "^3.5.2"
+seaborn = "^0.11.2"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
