@@ -8,7 +8,7 @@ from hpbandster.core.base_iteration import Datum
 MAX_BUDGET = {
     "cifar10": 175571,
     "colorectal_histology": 18336,
-    "fashionMNIST": 193248
+    "fashion_mnist": 193248
 }
 
 
