@@ -2,7 +2,7 @@ import os
 from path import Path
 
 SEEDS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-DATASETS = ["cifar10", "colorectal_histology", "fashionMNIST"]
+DATASETS = ["cifar10", "colorectal_histology", "fashion_mnist"]
 FIDELITIES = ["None", "Epochs", "N", "W", "Resolution", ["Epochs", "N", "W", "Resolution"]]
 MULTI_OBJECTIVE = [True, False]
 
