@@ -36,7 +36,7 @@ python -m jahs_bench.download --target surrogates
 To reproduce results for JAHS, run:
 
 ```bash
-python src/tasks/run_task.py --dataset DATASET --seed SEED --fidelity None
+python jahs_bench_201_experiments/tasks/run_task.py --dataset DATASET --seed SEED --fidelity None
 ```
 
 append `--use_default_hps` or `--use_default_arch` for NAS-only or HPO-only, respectively.
@@ -45,7 +45,7 @@ append `--use_default_hps` or `--use_default_arch` for NAS-only or HPO-only, res
 To reproduce results, run:
 
 ```bash
-python src/tasks/run_task.py --dataset DATASET --seed SEED --fidelity FIDELITY
+python jahs_bench_201_experiments/tasks/run_task.py --dataset DATASET --seed SEED --fidelity FIDELITY
 ```
 
 where `FIDELITY` may be one of `Epochs, N, W, Resolution`.
@@ -55,7 +55,7 @@ where `FIDELITY` may be one of `Epochs, N, W, Resolution`.
 We provide a script for SLURM-job submission for all leaderboard entries, before running:
 
 ```bash
-bash src/tasks/run_all.sh
+bash jahs_bench_201_experiments/tasks/run_all.sh
 ```
 
 please adjust the user-specific paths in `startup.sh` and `run_all.sh`
@@ -65,19 +65,19 @@ please adjust the user-specific paths in `startup.sh` and `run_all.sh`
 To reproduce plots from Section 4:
 
 ```bash
-python src/analysis/analysis.py
+python jahs_bench_201_experiments/analysis/analysis.py
 ```
 
 To reproduce Table 4 and 5:
 
 ```bash
-python src/analysis/compare_runtime.py
+python jahs_bench_201_experiments/analysis/compare_runtime.py
 ```
 
 To generate leaderboard: 
 
 ```bash
-python src/analysis/leaderboard.py
+python jahs_bench_201_experiments/analysis/leaderboard.py
 ```
 
 
