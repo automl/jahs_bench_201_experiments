@@ -25,7 +25,7 @@ pip install -r requirements.txt
 Download the surrogates:
 
 ```bash
-python -m jahs_bench_201.download --target surrogates
+python -m jahs_bench.download --target surrogates
 ```
 
     
