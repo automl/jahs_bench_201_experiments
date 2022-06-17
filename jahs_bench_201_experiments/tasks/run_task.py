@@ -2,8 +2,8 @@ import os
 import pickle
 from path import Path
 
-from jahs_bench_201_experiments.jahs_bench_201_experiments.optimizer.random_search import RandomSearch
-from jahs_bench_201_experiments.jahs_bench_201_experiments.optimizer.successive_halving import SuccessiveHalving
+from jahs_bench_201_experiments.jahs_bench_201_experiments.tasks.optimizer.random_search import RandomSearch
+from jahs_bench_201_experiments.jahs_bench_201_experiments.tasks.optimizer.successive_halving import SuccessiveHalving
 from jahs_bench_201_experiments.jahs_bench_201_experiments.utils.setup import set_seed, args
 from jahs_bench_201_experiments.jahs_bench_201_experiments.tasks.wrapper.jahs_bench_wrapper import JAHS_Bench_wrapper
 

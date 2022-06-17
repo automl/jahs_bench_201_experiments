@@ -4,15 +4,15 @@ import seaborn as sns
 from pathlib import Path
 import matplotlib.pyplot as plt
 
-from jahs_bench_201_experiments.src.utils.util import (
+from jahs_bench_201_experiments.jahs_bench_201_experiments.utils.util import (
     get_seed_info,
     MAX_BUDGET
 )
-from jahs_bench_201_experiments.src.utils.styles import (
+from jahs_bench_201_experiments.jahs_bench_201_experiments.utils.styles import (
     X_LABEL, Y_LABEL,
     X_MAP, Y_MAP
 )
-from jahs_bench_201_experiments.src.utils.plotting import (
+from jahs_bench_201_experiments.jahs_bench_201_experiments.utils.plotting import (
     set_general_plot_style,
     incumbent_plot,
     save_fig
