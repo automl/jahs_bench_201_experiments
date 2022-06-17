@@ -50,7 +50,8 @@ To reproduce results, run:
 python jahs_bench_201_experiments/tasks/run_task.py --dataset DATASET --seed SEED --fidelity FIDELITY
 ```
 
-where `FIDELITY` may be one of `Epochs, N, W, Resolution`.
+where `FIDELITY` may be one of `Epochs, N, W, Resolution` and  `DATASET` may be one of `cifar10, colorectal_histology, fashionMNIST`.
+
 
 ### Leaderboard
 
