@@ -27,7 +27,7 @@ STRATEGIES = {
 DATASETS = {
     "cifar10": "CIFAR-10",
     "colorectal_histology": "Colorectal-Histology",
-    "fashionMNIST": "Fashion-MNIST"
+    "fashion_mnist": "Fashion-MNIST"
 }
 
 
@@ -63,7 +63,7 @@ COLOR_MARKER_DICT = {
 Y_MAP = {
     "cifar10": {"RQ_1": [9, 20], "RQ_2": [9, 11], "RQ_2a": [9, 11], "RQ_2b": [9, 11]},
     "colorectal_histology": {"RQ_1": [4, 10], "RQ_2": [4, 10], "RQ_2a": [4, 10], "RQ_2b": [4, 10]},
-    "fashionMNIST": {"RQ_1": [4.5, 8], "RQ_2": [4.75, 6], "RQ_2a": [4.5, 10], "RQ_2b": [4.5, 10]},
+    "fashion_mnist": {"RQ_1": [4.5, 8], "RQ_2": [4.75, 6], "RQ_2a": [4.5, 10], "RQ_2b": [4.5, 10]},
 }
 
 X_MAP = [0, 25, 50, 75, 100]

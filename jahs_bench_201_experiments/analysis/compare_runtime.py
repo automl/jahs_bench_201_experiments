@@ -26,7 +26,7 @@ speedups["colorectal_histology"] = [
     [4.5591782, 6.74978023]
 ]
 # fashionMNIST
-speedups["fashionMNIST"] = [
+speedups["fashion_mnist"] = [
     [99.31263957, 5.6245753],
     [4.29611434, 5.6245753],
     [99.31263957, 5.06602542],

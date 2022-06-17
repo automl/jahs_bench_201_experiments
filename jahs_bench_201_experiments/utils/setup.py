@@ -16,7 +16,7 @@ parser.add_argument(
     "--dataset",
     default="cifar10",
     help="The benchmark dataset to run the experiments.",
-    choices=["cifar10", "colorectal_histology", "fashionMNIST"],
+    choices=["cifar10", "colorectal_histology", "fashion_mnist"],
 )
 parser.add_argument(
     "--run_id",
