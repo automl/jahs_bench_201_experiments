@@ -9,7 +9,7 @@ MULTI_OBJECTIVE = [True, False]
 p = Path(__file__).parent
 f = open(os.path.join(p, "all_experiments.txt"), "w+")
 
-BASE_PATH = "/home/janowski/jahs_bench/jahs_bench_201_experiments/src/tasks/"
+BASE_PATH = "/home/janowski/jahs_bench/jahs_bench_201_experiments/jahs_bench_201_experiments/tasks/"
 BASE_CMD = f"python {BASE_PATH}run_task.py"
 for seed in SEEDS:
     cmd = BASE_CMD + f" --seed {seed}"
