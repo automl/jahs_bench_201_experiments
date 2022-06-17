@@ -39,7 +39,7 @@ To reproduce results for JAHS, run:
 python jahs_bench_201_experiments/tasks/run_task.py --dataset DATASET --seed SEED --fidelity None
 ```
 
-where `DATASET` may be one of `cifar10, colorectal_histology, fashionMNIST`.
+where `DATASET` may be one of `cifar10, colorectal_histology, fashion_mnist`.
 
 Append `--use_default_hps` or `--use_default_arch` for NAS-only or HPO-only, respectively.
 
@@ -50,7 +50,7 @@ To reproduce results, run:
 python jahs_bench_201_experiments/tasks/run_task.py --dataset DATASET --seed SEED --fidelity FIDELITY
 ```
 
-where `FIDELITY` may be one of `Epochs, N, W, Resolution` and  `DATASET` may be one of `cifar10, colorectal_histology, fashionMNIST`.
+where `FIDELITY` may be one of `Epochs, N, W, Resolution` and  `DATASET` may be one of `cifar10, colorectal_histology, fashion_mnist`.
 
 
 ### Leaderboard
