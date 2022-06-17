@@ -16,7 +16,7 @@ slurm_scripts/*
 jahs_bench_data/
 jahs_bench_plots/
 jahs_bench_results
-src/utils/CMDs/all_experiments.txt
+jahs_bench_201_experiments/utils/CMDs/all_experiments.txt
 
 # IDE related
 .vscode/

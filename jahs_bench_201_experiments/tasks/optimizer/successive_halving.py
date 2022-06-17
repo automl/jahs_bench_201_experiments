@@ -18,7 +18,7 @@ from hpbandster.core.master import Master
 from hpbandster.optimizers.iterations import SuccessiveHalving as SH
 from hpbandster.optimizers.config_generators.random_sampling import RandomSampling as RS
 
-from wrapper.utils import fidelities, get_diagonal
+from jahs_bench_201_experiments.jahs_bench_201_experiments.wrapper.utils import fidelities, get_diagonal
 
 
 class SuccessiveHalving(Master):
