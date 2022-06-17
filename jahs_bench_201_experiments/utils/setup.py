@@ -92,6 +92,6 @@ parser.add_argument(
 args = parser.parse_args()
 if len(args.fidelity) == 1:
     args.fidelity = args.fidelity[0]
-    args.num_iterations = 42
+    args.n_iterations = 42
 if args.fidelity == "None":
     args.fidelity = None
