@@ -36,7 +36,7 @@ python -m jahs_bench.download --target surrogates
 To reproduce results for JAHS, run:
 
 ```bash
-python jahs_bench_201_experiments/tasks/run_task.py --dataset DATASET --seed SEED --fidelity None
+python jahs_bench_201_experiments/tasks/run_model_free.py --dataset DATASET --seed SEED --fidelity None
 ```
 
 where `DATASET` may be one of `cifar10, colorectal_histology, fashion_mnist`.
@@ -47,7 +47,7 @@ Append `--use_default_hps` or `--use_default_arch` for NAS-only or HPO-only, res
 To reproduce results, run:
 
 ```bash
-python jahs_bench_201_experiments/tasks/run_task.py --dataset DATASET --seed SEED --fidelity FIDELITY
+python jahs_bench_201_experiments/tasks/run_model_free.py --dataset DATASET --seed SEED --fidelity FIDELITY --min_budget MIN_BUDGET --max_budget MAX_BUDGET
 ```
 
 where `FIDELITY` may be one of `Epochs, N, W, Resolution` and  `DATASET` may be one of `cifar10, colorectal_histology, fashion_mnist`.
@@ -98,5 +98,6 @@ NOTE: this command requires all data.
     │   ├── tasks                       # Scipts for results geneartion
     │   │   │── ...
     │   │   │── run_all.sh              # Script submitting SLURM array job
-    │   │   │── run_task.py             # Main task script
+    │   │   │── run_model_free.py       # Main task script (model-free)
+    │   │   │── run_model_based.py      # Main task script (model-based)
     │   ├── utils
