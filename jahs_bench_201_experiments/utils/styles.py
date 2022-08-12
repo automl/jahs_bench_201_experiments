@@ -5,6 +5,9 @@ STRATEGIES = {
     "RS": "JAHS",
     "RS_just_hpo": "HPO-only",
     "RS_just_nas": "NAS-only",
+    "SMAC": "BO-JAHS",
+    "SMAC_just_hpo": "BO-HPO-only",
+    "SMAC_just_nas": "BO-NAS-only",
     "SH_Epochs": "Epochs",
     "SH_Epochs_just_hpo": "HPO-MF (epochs)",
     "SH_Epochs_just_nas": "NAS-MF (epochs)",
@@ -17,11 +20,12 @@ STRATEGIES = {
     "SH_Resolution": "Resolution multiplier",
     "SH_Resolution_just_hpo": "HPO-MF (resolution)",
     "SH_Resolution_just_nas": "NAS-MF (resolution)",
-    "BOHB_Epochs": "JAHS-BOHB (epochs)",
-    "BOHB_N": "JAHS-BOHB (repetitions)",
-    "BOHB_W": "JAHS-BOHB (width)",
-    "BOHB_Resolution": "JAHS-BOHB (resolution)",
-    "SH_diagonal": "Diagonal"
+    "SMACHB_Epochs": "Epochs",
+    "SMACHB_N": "Depth multiplier",
+    "SMACHB_W": "Width multiplier",
+    "SMACHB_Resolution": "Resolution multiplier",
+    "SMACHB_diagonal": "Diagonal traversal",
+    "SH_diagonal": "Diagonal traversal"
 }
 
 DATASETS = {
@@ -35,6 +39,10 @@ COLOR_MARKER_DICT = {
     'RS': "black",
     'RS_just_hpo': "mediumpurple",
     'RS_just_nas': "lightgreen",
+
+    'SMAC': "black",
+    'SMAC_just_hpo': "mediumpurple",
+    'SMAC_just_nas': "lightgreen",
 
     'SH_Epochs': "darkorange",
     'SH_Epochs_just_hpo': "dodgerblue",
@@ -53,17 +61,18 @@ COLOR_MARKER_DICT = {
     'SH_Resolution_just_nas': "forestgreen",
 
     'SH_diagonal': "blue",
+    'SMACHB_diagonal': "blue",
 
-    'BOHB_Epochs': "dodgerblue",
-    'BOHB_N': "forestgreen",
-    'BOHB_W': "firebrick",
-    'BOHB_Resolution': "lightpink",
+    'SMACHB_Epochs': "darkorange",
+    'SMACHB_N': "firebrick",
+    'SMACHB_W': "yellowgreen",
+    'SMACHB_Resolution': "mediumorchid",
 }
 
 Y_MAP = {
-    "cifar10": {"RQ_1": [9, 20], "RQ_2": [9, 11], "RQ_2a": [9, 11], "RQ_2b": [9, 11]},
-    "colorectal_histology": {"RQ_1": [4, 10], "RQ_2": [4, 10], "RQ_2a": [4, 10], "RQ_2b": [4, 10]},
-    "fashion_mnist": {"RQ_1": [4.5, 8], "RQ_2": [4.75, 6], "RQ_2a": [4.5, 10], "RQ_2b": [4.5, 10]},
+    "cifar10": {"RQ_1a": [7, 20], "RQ_1b": [7, 20], "RQ_2": [9, 11], "RQ_2a": [8, 11], "RQ_2b": [8, 11]},
+    "colorectal_histology": {"RQ_1a": [4, 10], "RQ_1b": [4, 10], "RQ_2": [4, 10], "RQ_2a": [4, 8], "RQ_2b": [4, 8]},
+    "fashion_mnist": {"RQ_1a": [4.5, 8], "RQ_1b": [4.5, 8], "RQ_2": [4.75, 6], "RQ_2a": [4.5, 6], "RQ_2b": [4.5, 6]},
 }
 
 X_MAP = [0, 25, 50, 75, 100]

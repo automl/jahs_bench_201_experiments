@@ -2,9 +2,9 @@ import os
 import pickle
 from path import Path
 
+from jahs_bench_201_experiments.utils.setup import set_seed, args
 from jahs_bench_201_experiments.tasks.optimizer.random_search import RandomSearch
 from jahs_bench_201_experiments.tasks.optimizer.successive_halving import SuccessiveHalving
-from jahs_bench_201_experiments.utils.setup import set_seed, args
 from jahs_bench_201_experiments.tasks.wrapper.jahs_bench_wrapper import JAHS_Bench_wrapper
 
 import hpbandster.core.result as hpres
@@ -18,11 +18,12 @@ else:
     experiment = ""
 if args.fidelity is None:
     experiment += "RS"
-else:
+elif args.fidelity is not None:
+    suffix = "SH"
     if len(args.fidelity) == 4:
-        experiment += f"SH_diagonal"
+        experiment += f"{suffix}_diagonal"
     else:
-        experiment += f"SH_{args.fidelity}"
+        experiment += f"{suffix}_{args.fidelity}"
 if args.use_default_hps:
     experiment += "_just_nas"
 elif args.use_default_arch:
@@ -60,6 +61,7 @@ worker = JAHS_Bench_wrapper(
 )
 
 worker.run(background=True)
+
 
 if args.fidelity is None:
     searcher = RandomSearch(

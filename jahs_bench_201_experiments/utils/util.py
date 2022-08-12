@@ -4,7 +4,6 @@ import numpy as np
 from hpbandster.core.result import Result
 from hpbandster.core.base_iteration import Datum
 
-
 MAX_BUDGET = {
     "cifar10": 175571,
     "colorectal_histology": 18336,
@@ -53,7 +52,6 @@ def logged_results_to_HBS_result(directory):
     with open(os.path.join(directory, 'results.json')) as fh:
         for line in fh:
             config_id, budget, time_stamps, result, exception = json.loads(line)
-
             id = tuple(config_id)
 
             data[id].time_stamps[budget] = time_stamps
@@ -77,16 +75,12 @@ def logged_results_to_HBS_result(directory):
     return (Result([data], HB_config))
 
 
-def get_seed_info(path, seed, get_loss_from_run_fn=lambda r: r.loss):
+def _get_info_hpbandster(path, seed, dataset):
+    get_loss_from_run_fn = lambda r: r.loss
     # load runs from log file
     result = logged_results_to_HBS_result(os.path.join(path, str(seed)))
     # get all executed runs
     all_runs = result.get_all_runs()
-
-    dataset = list(filter(
-        None,
-        list(map(lambda _d: _d if _d in path else None, MAX_BUDGET.keys()))
-    ))[0]
 
     runtime = {"started": [], "finished": []}
     data = []
@@ -108,6 +102,43 @@ def get_seed_info(path, seed, get_loss_from_run_fn=lambda r: r.loss):
         for time, time_list in runtime.items():
             time_list.append(r.time_stamps[time])
 
+    total_runtime = runtime["finished"][-1] - runtime["started"][0]
+
+    return data, total_runtime
+
+
+def _get_info_smac(path, seed, dataset):
+    with open(os.path.join(path, seed, "results.json"), "r") as fh:
+        results = json.load(fh)
+
+    data = []
+
+    for i, result in enumerate(results):
+        loss = result[-1]["loss"]
+        _info = result[-1]["info"]
+
+        info = dict()
+        for k, v in _info.items():
+            if k == "cost":
+                v /= MAX_BUDGET[dataset]
+            info[k] = v
+
+        data.append((i, loss, info))
+
+    return data, None
+
+
+def get_seed_info(path, seed):
+    dataset = list(filter(
+        None,
+        list(map(lambda _d: _d if _d in path else None, MAX_BUDGET.keys()))
+    ))[0]
+
+    if "SMAC" in path:
+        data, total_runtime = _get_info_smac(path, seed, dataset)
+    else:
+        data, total_runtime = _get_info_hpbandster(path, seed, dataset)
+
     if "Epochs" in path or "diagonal" in path:
         data.reverse()
         for idx, (_id, loss, info) in enumerate(data):
@@ -121,6 +152,5 @@ def get_seed_info(path, seed, get_loss_from_run_fn=lambda r: r.loss):
 
     data = [(d[1], d[2]) for d in data]
     losses, infos = zip(*data)
-    total_runtime = runtime["finished"][-1] - runtime["started"][0]
 
     return list(losses), list(infos), total_runtime

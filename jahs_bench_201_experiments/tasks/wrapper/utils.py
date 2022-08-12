@@ -110,7 +110,7 @@ hyperparameters = [
 def create_config_space(
         use_default_arch: bool = False,
         use_default_hps: bool = False,
-        fidelity: Union[str, list] = "Epochs",
+        fidelity: Union[str, list] = None,
         seed=None
 ):
     default_config = dict()

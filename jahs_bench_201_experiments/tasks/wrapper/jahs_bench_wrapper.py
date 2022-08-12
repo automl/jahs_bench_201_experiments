@@ -13,7 +13,6 @@ from jahs_bench.lib.core.configspace import joint_config_space
 from jahs_bench_201_experiments.tasks.wrapper.utils import create_config_space
 from jahs_bench_201_experiments.tasks.wrapper.utils import fidelities, get_diagonal
 
-
 METRIC_BOUNDS = {
     "latency": {
         "cifar10": [0.00635562329065232, 114.1251799692699],
@@ -36,23 +35,23 @@ def normalize_metric(data, dataset, key="latency"):
 
 class JAHS_Bench_wrapper(Worker):
     def __init__(
-        self,
-        dataset: str,
-        model_path: Union[str, Path, list],
-        use_default_hps: bool = False,
-        use_default_arch: bool = False,
-        fidelity: str = "Epochs",
-        use_surrogate: bool = True,
-        multi_objective: bool = False,
-        seed: int = None,
-        **kwargs
+            self,
+            dataset: str,
+            model_path: Union[str, Path, list],
+            use_default_hps: bool = False,
+            use_default_arch: bool = False,
+            fidelity: str = "Epochs",
+            use_surrogate: bool = True,
+            multi_objective: bool = False,
+            seed: int = None,
+            **kwargs
     ):
         super().__init__(**kwargs)
 
         assert dataset in datasets, f"Other benchmarks than {datasets} not supported"
 
         self.dataset = dataset
-        self.use_surrogate = use_surrogate  
+        self.use_surrogate = use_surrogate
         self.multi_objective = multi_objective
 
         self.benchmark_fn = Benchmark(
@@ -70,19 +69,43 @@ class JAHS_Bench_wrapper(Worker):
             seed=seed
         )
 
+    def __call__(self,
+                 config,
+                 budget=200,
+                 instance=None,
+                 seed=None,
+                 working_directory=None,
+                 return_dict=False,
+                 *args,
+                 **kwargs
+                 ):
+        if return_dict:
+            return self.compute(config,
+                                budget=budget,
+                                working_directory=working_directory,
+                                *args,
+                                **kwargs
+                                )
+        return self.compute(config,
+                            budget=budget,
+                            working_directory=working_directory,
+                            *args,
+                            **kwargs
+                            )["loss"]
+
     def compute(
-        self,
-        config,
-        budget,
-        working_directory,
-        *args,
-        **kwargs
+            self,
+            config,
+            budget,
+            working_directory,
+            *args,
+            **kwargs
     ):
         query_config = deepcopy(self.default_config)
         query_config.update(config)
         if isinstance(self.fidelity, list):
             keys, vals = get_diagonal(self.fidelity)
-            budgets = np.linspace(0, 1, 3)
+            budgets = np.linspace(1, 3, 3)
             fidelity_dict = dict(zip(keys, vals[0][budgets.tolist().index(budget)]))
             for fidelity, val in fidelity_dict.items():
                 if fidelity == "Epochs":
@@ -117,7 +140,7 @@ class JAHS_Bench_wrapper(Worker):
         else:
             loss = float(100 - valid_acc)
 
-        return({
+        return ({
             'loss': loss,
             'info': dict(valid_acc=valid_acc, latency=latency, cost=cost)
         })

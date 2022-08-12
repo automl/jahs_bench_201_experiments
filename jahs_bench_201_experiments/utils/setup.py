@@ -51,12 +51,12 @@ parser.add_argument(
 )
 parser.add_argument(
     "--min_budget",
-    type=int, default=12,
+    type=float, default=12,
     help="Min fidelity value."
 )
 parser.add_argument(
     "--max_budget",
-    type=int, default=200,
+    type=float, default=200,
     help="Max fidelity value."
 )
 parser.add_argument(
@@ -92,6 +92,6 @@ parser.add_argument(
 args = parser.parse_args()
 if len(args.fidelity) == 1:
     args.fidelity = args.fidelity[0]
-    args.n_iterations = 42
+    args.n_iterations = 50
 if args.fidelity == "None":
     args.fidelity = None

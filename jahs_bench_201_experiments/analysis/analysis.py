@@ -22,8 +22,10 @@ from jahs_bench_201_experiments.utils.plotting import (
 BASE_PATH = Path(".")
 
 EXPERIMENTS = {
-    "RQ_1": ["RS", "RS_just_hpo", "RS_just_nas"],
-    "RQ_2": ["SH_Epochs", "SH_N", "SH_W", "SH_Resolution"]
+    "RQ_1a": ["RS", "RS_just_hpo", "RS_just_nas"],
+    "RQ_1b": ["SMAC", "SMAC_just_hpo", "SMAC_just_nas"],
+    "RQ_2a": ["SH_Epochs", "SH_N", "SH_W", "SH_Resolution", "SH_diagonal"],
+    "RQ_2b": ["SMACHB_Epochs", "SMACHB_N", "SMACHB_W", "SMACHB_Resolution", "SMACHB_diagonal"]
 }
 
 for experiment, strategies_to_plot in EXPERIMENTS.items():

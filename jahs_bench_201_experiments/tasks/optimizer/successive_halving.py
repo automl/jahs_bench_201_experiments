@@ -56,7 +56,7 @@ class SuccessiveHalving(Master):
         self.fidelity = fidelity
         if isinstance(fidelity, list):
             # self.budgets = get_diagonal(fidelity, eta=eta)
-            self.budgets = np.linspace(0, 1, int(eta))
+            self.budgets = np.linspace(1, 3, int(eta))
             self.max_SH_iter = len(self.budgets)
             self.eta = 2
         else:
